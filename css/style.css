@@ -58,7 +58,7 @@ header {
     margin-bottom: 0.50rem;
 }
 
-.form-input {
+.form-input, .form-select {
     padding: 0.50rem 1rem;
     border: 1px solid #6a6a6a31;
     border-radius: 0.5rem;

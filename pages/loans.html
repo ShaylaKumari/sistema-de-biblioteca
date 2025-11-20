@@ -6,6 +6,7 @@
     <title>Sistema de Biblioteca</title>
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <nav>
@@ -22,6 +23,63 @@
             </div>
         </div>
     </nav>
+
+    <main>
+        <div class="main-content">
+            <header>
+                <h1 class="page-title">📖 Gerenciamento de Empréstimos</h1>
+                <p class="page-subtitle">Registre empréstimos e devoluções de livros</p>
+            </header>
+
+            <section class="form-section">
+                <h2 class="section-title">➕ Registrar Novo Empréstimo</h2>
+                <form id="formLoans" class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userId">Selecione o Usuário *</label>
+                            <select id="userId" class="form-select" required>
+                                <option value="">-- Selecione um usuário --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookId">Selecione o Livro *</label>
+                            <select id="bookId" class="form-select" required>
+                                <option value="">-- Selecione um livro --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">
+                        ➕ Registrar Empréstimo
+                    </button>
+                </form>
+            </section>
+
+            <section class="list-section">
+                <div class="list-header">
+                    <h2 class="section-title">
+                        📋 Histórico de Empréstimos
+                        <span class="list-count">(Total: <span id="totalLoans">0</span>)</span>
+                    </h2>
+                    <div class="filter-buttons">
+                        <button class="btn-filter active" data-filter="all">📚 Todos</button>
+                        <button class="btn-filter" data-filter="assets">📖 Ativos</button>
+                        <button class="btn-filter" data-filter="returned">✅ Devolvidos</button>
+                    </div>
+                </div>
+
+                <div id="listLoans" class="data-list"></div>
+                <div id="emptyState" class="empty-state">
+                    <p class="empty-icon">📖</p>
+                    <p class="empty-text">Nenhum empréstimo registrado ainda</p>
+                    <p class="empty-subtext">Use o formulário acima para registrar o primeiro empréstimo</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="https://shaylakumari.github.io/Portfolio/#home" target="_blank">Ananda Shayla</a> &copy; 2025</p>
+    </footer>
 
 </body>
 </html>
