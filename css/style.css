@@ -32,6 +32,9 @@ header {
 }
 
 .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1rem;
     font-weight: 600;
 }
@@ -95,9 +98,9 @@ header {
     align-items: center;
 }
 
-.list-count {
+.list-count, .section-title p {
     font-size: 0.90rem;
-    color: var(--color-gray-600);
+    color: var(--color-gray-400);
 }
 
 .empty-state {
@@ -125,3 +128,31 @@ header {
     font-size: 0.90rem;
     color: var(--color-gray-400);
 }
+
+.filter-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-filter {
+    padding: 0.50rem 0.75rem;
+    border: none;
+    border-radius: 0.50rem;
+    font-family: var(--font-family);
+    font-weight: 700;
+    color: var(--color-gray-700);
+    border: 1px solid #6a6a6a3d;
+    background-color: var(--color-white);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-filter:hover {
+    background-color: var(--color-gray-200);
+}
+
+.btn-filter.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+

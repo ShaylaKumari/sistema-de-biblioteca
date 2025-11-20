@@ -6,6 +6,7 @@
     <title>Sistema de Biblioteca</title>
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <nav>
@@ -23,5 +24,68 @@
         </div>
     </nav>
 
+    <main>
+        <div class="main-content">
+            <header>
+                <h1 class="page-title">📚 Gerenciamento de Livros</h1>
+                <p class="page-subtitle">Cadastre, edite e gerencie o catálogo da biblioteca</p>
+            </header>
+
+            <section class="form-section">
+                <h2 class="section-title">➕ Cadastrar Novo Livro</h2>
+                <form id="formBook" class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="title">Título *</label>
+                            <input type="text" id="title" class="form-input" placeholder="Digite o título do livro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Autor *</label>
+                            <input type="text" id="author" class="form-input" placeholder="Digite o nome do autor" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="year">Ano de Publicação *</label>
+                            <input type="number" id="year" class="form-input" placeholder="Digite o ano" min="1000" max="2100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Gênero *</label>
+                            <input type="text" id="genre" class="form-input" placeholder="Ex: Ficção, Romance, Terror" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">
+                        ➕ Cadastrar Livro
+                    </button>
+                </form>
+            </section>
+
+            <section class="list-section">
+                <div class="list-header">
+                    <h2 class="section-title">
+                        📋 Livros Cadastrados
+                        <p>(<span class="list-count">0</span> de <span id="totalBooks">0</span>)</p>
+                    </h2>
+                    
+                    <div class="filter-buttons">
+                        <button class="btn-filter active" data-filter="all">📚 Todos</button>
+                        <button class="btn-filter" data-filter="available">✅ Disponíveis</button>
+                        <button class="btn-filter" data-filter="borrowed">📖 Emprestados</button>
+                    </div>
+                </div>
+
+                <div id="listBooks" class="data-list"></div>
+                <div id="emptyState" class="empty-state">
+                    <p class="empty-icon">📚</p>
+                    <p class="empty-text">Nenhum livro cadastrado ainda</p>
+                    <p class="empty-subtext">Use o formulário acima para cadastrar o primeiro livro</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="https://shaylakumari.github.io/Portfolio/#home" target="_blank">Ananda Shayla</a> &copy; 2025</p>
+    </footer>
 </body>
 </html>
