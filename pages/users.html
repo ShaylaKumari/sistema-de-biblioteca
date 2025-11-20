@@ -6,6 +6,7 @@
     <title>Sistema de Biblioteca</title>
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <nav>
@@ -23,5 +24,49 @@
         </div>
     </nav>
 
+    <main>
+        <div class="main-content">
+            <header>
+                <h1 class="page-title">👥 Gerenciamento de Usuários</h1>
+                <p class="page-subtitle">Cadastre, edite e gerencie os usuários do sistema</p>
+            </header>
+
+            <section class="form-section">
+                <h2 class="section-title">➕ Cadastrar Novo Usuário</h2>
+                <form id="formUser" class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome completo *</label>
+                            <input type="text" id="name" class="form-input" placeholder="Digite o nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" class="form-input" placeholder="Digite o email" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">
+                        ➕ Cadastrar Usuário
+                    </button>
+                </form>
+            </section>
+
+            <section class="list-section">
+                <div class="list-header">
+                    <h2 class="section-title">📋 Usuários Cadastrados</h2>
+                    <span class="list-count">Total: <span id="totalUsers">0</span></span>
+                </div>
+                <div id="listUsers" class="data-list"></div>
+                <div id="emptyState" class="empty-state">
+                    <p class="empty-icon">👤</p>
+                    <p class="empty-text">Nenhum usuário cadastrado ainda</p>
+                    <p class="empty-subtext">Use o formulário acima para cadastrar o primeiro usuário</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="https://shaylakumari.github.io/Portfolio/#home" target="_blank">Ananda Shayla</a> &copy; 2025</p>
+    </footer>
 </body>
 </html>

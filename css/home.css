@@ -1,0 +1,140 @@
+/* HEADER */
+header {
+    padding: 2rem 0 3rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-white);
+    gap: 0.25rem;
+}
+
+.header-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-gray-200);
+    margin-top: 0.50rem;
+}
+
+/* MAIN */
+main {
+    flex: 1;
+}
+
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* SECTION - STATS */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.stat-card {
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.185);
+    text-decoration: none;
+    color: var(--color-white);
+    font-size: 2.25rem;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+
+.stat-card:hover {
+    transform: translateZ(40px) scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-text {
+    margin-top: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.stat-user {
+    background-color: var(--color-blue);
+}
+
+.stat-books {
+    background-color: var(--color-green);
+}
+
+.stat-available {
+    background-color: var(--color-purple);
+}
+
+.stat-loans {
+    background-color: var(--color-orange);
+}
+
+/* SECTION - QUICK ACTIONS */
+.quick-actions {
+    background-color: var(--color-white);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin: 3rem 0;
+    padding: 2rem;
+}
+
+.action-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+}
+
+.action-card {
+    text-decoration: none;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.185);
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+
+.action-card:hover {
+    transform: translateZ(40px) scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.action-card span {
+    font-size: 2rem;
+}
+
+.action-title {
+    font-size: 1.25rem;
+    color: var(--color-white);
+    margin: 0.25rem 0;
+}
+
+.action-description {
+    font-size: 1rem;
+    color: var(--color-gray-200);
+}
+
+.action-users {
+    background-color: #155dfb;
+}
+
+.action-books {
+    background-color: #00a63e;
+}
+
+.action-loans {
+    background-color: #9810fa;
+}
+
