@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Biblioteca</title>
     <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -23,5 +24,69 @@
         </div>
     </nav>
 
+    <header>
+        <h1 class="header-title"><span>📚</span>Sistema de Biblioteca</h1>
+        <p class="header-subtitle">Gerencie usuários, livros e empréstimos de forma simples e eficiente</p>
+    </header>
+
+    <main>
+        <div class="main-content">
+            <section class="stats-section">
+                <a href="./pages/users.html" class="stat-card stat-user">
+                    <div class="stat-content">
+                        <span>👥</span>
+                        <p class="stat-value" id="totalUsers">0</p>
+                    </div>
+                    <h3 class="stat-text">Total de usuários</h3>
+                </a>
+                <a href="./pages/books.html" class="stat-card stat-books">
+                    <div class="stat-content">
+                        <span>📚</span>
+                        <p class="stat-value" id="totalBooks">0</p>
+                    </div>
+                    <h3 class="stat-text">Total de Livros</h3>
+                </a>
+                <a href="./pages/books.html" class="stat-card stat-available">
+                    <div class="stat-content">
+                        <span>✅</span>
+                        <p class="stat-value" id="booksAvailable">0</p>
+                    </div>
+                    <h3 class="stat-text">Livros Disponíveis</h3>
+                </a>
+                <a href="./pages/loans.html" class="stat-card stat-loans">
+                    <div class="stat-content">
+                        <span>📖</span>
+                        <p class="stat-value" id="activeLoans">0</p>
+                    </div>
+                    <h3 class="stat-text">Empréstimos Ativos</h3>
+                </a>
+            </section>
+
+            <section class="quick-actions">
+                <h2 class="section-title">⚡ Ações Rápidas</h2>
+                <div class="action-cards">
+                    <a href="./pages/users.html" class="action-card action-users">
+                        <span>➕</span>
+                        <h3 class="action-title">Cadastrar Usuário</h3>
+                        <p class="action-description">Adicione um novo usuário ao sistema</p>
+                    </a>
+                    <a href="./pages/books.html" class="action-card action-books">
+                        <span>📕</span>
+                        <h3 class="action-title">Cadastrar Livros</h3>
+                        <p class="action-description">Adicione um novo livro a coleção</p>
+                    </a>
+                    <a href="./pages/loans.html" class="action-card action-loans">
+                        <span>📝</span>
+                        <h3 class="action-title">Novo Empréstimo</h3>
+                        <p class="action-description">Registre um novo empréstimo</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="https://shaylakumari.github.io/Portfolio/#home" target="_blank">Ananda Shayla</a> &copy; 2025</p>
+    </footer>
 </body>
 </html>
