@@ -1,5 +1,3 @@
-let userEditingId = null;
-
 function generateId() {
     return Date.now().toString();
 }
@@ -12,8 +10,8 @@ function validateEmail(email) {
 // LOCALSTORAGE
 function getUsers() {
     try {
-        const dados = localStorage.getItem('library_users');
-        return dados ? JSON.parse(dados) : [];
+        const data = localStorage.getItem('library_users');
+        return data ? JSON.parse(data) : [];
     } catch (error) {
         console.error('Erro ao obter usuários:', error);
         return[];
@@ -94,6 +92,8 @@ function searchUserId(id) {
 }
 
 // INTERFACE
+let userEditingId = null;
+
 function renderUsers() {
     const users = getUsers();
     const listUsers = document.getElementById('listUsers');
@@ -113,7 +113,7 @@ function renderUsers() {
     const sortedUsers = users.sort((a, b) => a.name.localeCompare(b.name));
 
     listUsers.innerHTML = `
-        <table class="users-table">
+        <table class="list-table">
             <thead>
                 <tr>
                     <th>NOME</th>

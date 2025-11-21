@@ -98,21 +98,21 @@ header {
     align-items: center;
 }
 
-.list-count, .section-title p {
+.list-count {
     font-size: 0.90rem;
     color: var(--color-gray-400);
 }
 
-.users-table {
+.list-table {
     width: 100%;
     padding: 1.5rem 0.5rem;
 }
 
-.users-table thead {
+.list-table thead {
     background-color: var(--color-gray-50);
 }
 
-.users-table thead th {
+.list-table thead th {
     text-align: left;
     padding: 1rem;
     font-weight: 600;
@@ -121,22 +121,22 @@ header {
     border-bottom: 2px solid var(--color-gray-200);
 }
 
-.users-table thead th:last-child {
+.list-table thead th:last-child {
     text-align: right;
 }
 
-.users-table tbody td {
+.list-table tbody td {
     padding: 1rem;
     font-size: 0.90rem;
     color: var(--color-gray-500);
     border-bottom: 1px solid var(--color-gray-200);
 }
 
-.users-table tbody tr td:first-child {
+.list-table tbody tr td:first-child {
     font-weight: bold;
 }
 
-.users-table tbody tr td:last-child {
+.list-table tbody tr td:last-child {
     text-align: right;
 }
 
