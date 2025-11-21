@@ -99,7 +99,21 @@ function editBook(id) {
 
     bookEditingId = id;
     document.getElementById('btnSubmit').innerHTML = '💾 Atualizar Livro'
+    document.getElementById('btnCancel').style.display = 'inline-block';
     document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function cancelEditBook() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('year').value = '';
+    document.getElementById('genre').value = '';
+
+    bookEditingId = null;
+
+    document.getElementById('btnSubmit').innerHTML = '➕ Cadastrar Livro';
+
+    document.getElementById('btnCancel').style.display = 'none';
 }
 
 function confirmBookDeletion(id) {

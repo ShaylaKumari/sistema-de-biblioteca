@@ -72,7 +72,19 @@ function editUser(id) {
 
     userEditingId = id;
     document.getElementById('btnSubmit').innerHTML = '💾 Atualizar Usuário';
+    document.getElementById('btnCancel').style.display = 'inline-block';
     document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function cancelEditUser() {
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+
+    userEditingId = null;
+
+    document.getElementById('btnSubmit').innerHTML = '➕ Cadastrar Usuário';
+
+    document.getElementById('btnCancel').style.display = 'none';
 }
 
 function confirmUserDeletion(id) {
