@@ -103,10 +103,77 @@ header {
     color: var(--color-gray-400);
 }
 
+.users-table {
+    width: 100%;
+    padding: 1.5rem 0.5rem;
+}
+
+.users-table thead {
+    background-color: var(--color-gray-50);
+}
+
+.users-table thead th {
+    text-align: left;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    border-bottom: 2px solid var(--color-gray-200);
+}
+
+.users-table thead th:last-child {
+    text-align: right;
+}
+
+.users-table tbody td {
+    padding: 1rem;
+    font-size: 0.90rem;
+    color: var(--color-gray-500);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.users-table tbody tr td:first-child {
+    font-weight: bold;
+}
+
+.users-table tbody tr td:last-child {
+    text-align: right;
+}
+
+.btn-edit, .btn-delete {
+    padding: 0.50rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-gray-200);
+    background-color: var(--color-white);
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    margin-left: 0.25rem;
+    transition: 0.3s;
+}
+
+.btn-edit {
+    color: var(--color-primary);
+}
+
+.btn-delete {
+    color: red;
+}
+
+.btn-edit:hover {
+    background-color: rgba(15, 143, 247, 0.123);
+}
+
+.btn-delete:hover {
+    background-color: rgba(236, 0, 0, 0.13);
+}
+
 .empty-state {
     text-align: center;
     padding: 3rem 0;
-    /* display: none; */
+    display: none;
 }
 
 .empty-state.show {
@@ -155,4 +222,3 @@ header {
     background-color: var(--color-primary);
     color: var(--color-white);
 }
-
