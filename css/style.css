@@ -132,12 +132,19 @@ header {
     border-bottom: 1px solid var(--color-gray-200);
 }
 
-.list-table tbody tr td:first-child {
-    font-weight: bold;
+.list-table tbody tr td:first-child, #bold {
+    font-weight: 500;
+    color: var(--color-gray-800);
 }
 
 .list-table tbody tr td:last-child {
     text-align: right;
+}
+
+.list-table tbody tr td small {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
 }
 
 .btn-edit, .btn-delete {
@@ -201,7 +208,7 @@ header {
     gap: 0.75rem;
 }
 
-.btn-filter {
+.btn-filter, .btn-confirm {
     padding: 0.50rem 0.75rem;
     border: none;
     border-radius: 0.50rem;
@@ -214,6 +221,15 @@ header {
     transition: 0.3s;
 }
 
+.btn-confirm {
+    color: #00a63e;
+    transition: 0.3s;
+}
+
+.btn-confirm:hover {
+    background-color: #00a63d17;
+}
+
 .btn-filter:hover {
     background-color: var(--color-gray-200);
 }
@@ -221,4 +237,20 @@ header {
 .btn-filter.active {
     background-color: var(--color-primary);
     color: var(--color-white);
+}
+
+.status {
+    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-weight: 500;
+}
+
+.sts-borrowed {
+    color: #9f2d00;
+    background-color: rgba(240, 131, 6, 0.288);
+}
+
+.sts-success {
+    color: #026630;
+    background-color: rgba(6, 231, 6, 0.185);
 }

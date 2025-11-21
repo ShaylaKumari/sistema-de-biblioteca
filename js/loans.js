@@ -1,96 +1,3 @@
-function generateId() {
-    return Date.now().toString();
-}
-
-function formatDate(dateISO) {
-    const date = new Date(dateISO);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-}
-
-// LOCALSTORAGE
-function getLoans() {
-    try {
-        const data = localStorage.getItem('library_loans');
-        return data ? JSON.parse(data) : [];
-    } catch (error) {
-        console.error('Erro ao obter empréstimos:', error);
-        return [];
-    }
-}
-
-function registerLoan(loan) {
-    try {
-        const user = searchUserId(loan.userId);
-        if (!user) {
-            throw new Error('Usuário não encontrado');
-        }
-
-        const book = searchBookId(loan.bookId);
-        if (!book) {
-            throw new Error('Livro não encontrado');
-        }
-        if(!book.available) {
-            throw new Error('Livro não disponível para empréstimo');
-        }
-
-        const loans = getLoans();
-
-        const newLoan = {
-            id: generateId(),
-            userId: loan.userId,
-            bookId: loan.bookId,
-            userName: user.name,
-            bookTitle: book.title,
-            loanDate: new Date().toISOString(),
-            devolutionDate: null,
-            active: true
-        };
-
-        loans.push(newLoan);
-        localStorage.setItem('library_loans', JSON.stringify(loans));
-
-        updateBookAvailability(loan.bookId, false);
-
-        return newLoan;
-    } catch (error) {
-        throw error;
-    }
-}
-
-function registerDevolution(id) {
-    try {
-        const loans = getLoans();
-        const index = loans.findIndex(l => l.id === id);
-
-        if (index === -1) {
-            throw new Error('Empréstimo não encontrado');
-        }
-
-        if (!loans[index].active) {
-            throw new Error('Empréstimo já foi devolvido');
-        }
-
-        loans[index].devolutionDate = new Date().toISOString();
-        loans[index].active = false;
-
-        localStorage.setItem('library_loans', JSON.stringify(loans));
-
-        updateBookAvailability(loans[index].bookId, true);
-
-        return loans[index];
-    } catch (error) {
-        throw error;
-    }
-}
-
-function searchLoanId(id) {
-    const loans = getLoans();
-    return loans.find(l => l.id === id) || null;
-}
-
 // INTERFACE
 let currentFilter = 'all';
 
@@ -141,7 +48,7 @@ function filterLoans(loans) {
 
 function renderLoans() {
     const allLoans = getLoans();
-    const loans = filterBooks(allLoans);
+    const loans = filterLoans(allLoans);
     const listLoans = document.getElementById('listLoans');
     const emptyState = document.getElementById('emptyState');
     const totalLoans = document.getElementById('totalLoans');
@@ -190,10 +97,12 @@ function renderLoans() {
                 ${
                     sortedLoans.map(loan => `
                         <tr>
-                            <td>${loan.userNome}</td>
-                            <td>${loan.bookTitle}</td>
+                            <td>${loan.userName}<br><small>${loan.userEmail}</small></td>
+                            <td id="bold">${loan.bookTitle}<br><small>${loan.bookAuthor}</small></td>
                             <td>${formatDate(loan.loanDate)}</td>
-                            <td>${formatDate(loan.loanDevolution)}</td>
+                            <td>
+                                ${loan.devolutionDate ? `${formatDate(loan.devolutionDate)}` : '-'}
+                            </td>
                             <td>
                                 ${loan.active 
                                     ? '<span class="status sts-borrowed">📖 Ativo</span>'
@@ -204,7 +113,7 @@ function renderLoans() {
                                 ${loan.active 
                                     ? `<button class="btn-confirm" onclick="confirmDevolution('${loan.id}')">
                                         ✅ Registrar Devolução
-                                    </button>`
+                                        </button>`
                                     : ''
                                 }
                             </td>
