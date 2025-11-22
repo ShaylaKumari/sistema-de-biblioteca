@@ -11,15 +11,19 @@ function fillSelects() {
     selectUser.innerHTML = '<option value="">-- Selecione um usuário --</option>';
     selectBook.innerHTML = '<option value="">-- Selecione um livro --</option>';
 
-    users.forEach(user => {
+    const booksAvailable = books.filter(book => book.available);
+
+    const sortedUsers = users.sort((a, b) => a.name.localeCompare(b.name));
+    const sortedBooks = booksAvailable.sort((a, b) => a.title.localeCompare(b.title));
+
+    sortedUsers.forEach(user => {
         const option = document.createElement('option');
         option.value = user.id;
         option.textContent = `${user.name} (${user.email})`;
         selectUser.appendChild(option);
     });
 
-    const booksAvailable = books.filter(book => book.available);
-    booksAvailable.forEach(book => {
+    sortedBooks.forEach(book => {
         const option = document.createElement('option');
         option.value = book.id;
         option.textContent = `${book.title} - ${book.author} (${book.year})`;

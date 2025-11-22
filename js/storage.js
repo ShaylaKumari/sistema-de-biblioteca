@@ -44,7 +44,7 @@ function saveUser(user) {
         }
 
         const users = getUsers();
-        const emailExists = users.some(u => u.email === user.email.toLowerCase());
+        const emailExists = users.some(u => u.email === user.email.trim().toLowerCase());
         if (emailExists) {
             throw new Error('❌ Email já cadastrado');
         }
@@ -78,7 +78,7 @@ function updateUser(id, updatedData) {
             throw new Error('❌ Usuário não encontrado');
         }
 
-        const emailExists = users.some(u => u.email === updatedData.email.toLowerCase() && u.id !== id);
+        const emailExists = users.some(u => u.email === updatedData.email.trim().toLowerCase() && u.id !== id);
         if (emailExists) {
             throw new Error('❌ Email já cadastrado');
         }
@@ -136,7 +136,7 @@ function getBooks() {
 function saveBook(book) {
     try {
         const books = getBooks();
-        const titleExists = books.some(b => b.title.toLowerCase() === book.title.toLowerCase());
+        const titleExists = books.some(b => b.title.toLowerCase() === book.title.trim().toLowerCase());
         if (titleExists) {
             throw new Error('❌ Livro já cadastrado');
         }
@@ -168,7 +168,7 @@ function updateBook(id, updatedData) {
             throw new Error('❌ Livro não encontrado');
         }
 
-        const titleExists = books.some(b => b.title.toLowerCase() === updatedData.title.toLowerCase() && b.id !== id);
+        const titleExists = books.some(b => b.title.toLowerCase() === updatedData.title.trim().toLowerCase() && b.id !== id);
         if (titleExists) {
             throw new Error('❌ Livro já cadastrado');
         }
