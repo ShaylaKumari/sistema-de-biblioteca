@@ -154,16 +154,6 @@ function handleSubmit(event) {
     const userId = document.getElementById('userId').value;
     const bookId = document.getElementById('bookId').value;
 
-    if (!userId) {
-        showNotification('⚠️ Selecione um usuário', 'warning');
-        return
-    }
-
-    if (!bookId) {
-        showNotification('⚠️ Selecione um livro', 'warning');
-        return;
-    }
-
     const loanData = {
         userId: userId,
         bookId: bookId

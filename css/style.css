@@ -298,8 +298,4 @@ header {
     color: var(--color-error);
 }
 
-.notification.warning {
-    color: var(--color-warning);
-}
-
 

@@ -82,6 +82,7 @@ function clearForm() {
     document.getElementById('formBook').reset();
     bookEditingId = null;
     document.getElementById('btnSubmit').innerHTML = '➕ Cadastrar Livro';
+    document.getElementById('btnCancel').style.display = 'none';
 }
 
 function editBook(id) {

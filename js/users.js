@@ -57,6 +57,7 @@ function clearForm() {
     document.getElementById('formUser').reset();
     userEditingId = null;
     document.getElementById('btnSubmit').innerHTML = '➕ Cadastrar Usuário';
+    document.getElementById('btnCancel').style.display = 'none';
 }
 
 function editUser(id) {

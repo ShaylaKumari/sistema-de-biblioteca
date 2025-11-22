@@ -39,10 +39,14 @@ function getUsers() {
 
 function saveUser(user) {
     try {
+        if (!validateEmail(user.email)) {
+            throw new Error('❌ Email inválido');
+        }
+
         const users = getUsers();
-        const emailExists = users.some(u => u.email === user.email);
+        const emailExists = users.some(u => u.email === user.email.toLowerCase());
         if (emailExists) {
-            throw new Error('Email já cadastrado');
+            throw new Error('❌ Email já cadastrado');
         }
 
         const newUser = {
@@ -64,19 +68,19 @@ function saveUser(user) {
 function updateUser(id, updatedData) {
     try {
         if (!validateEmail(updatedData.email)) {
-            throw new Error('Email inválido');
+            throw new Error('❌ Email inválido');
         }
 
         const users = getUsers();
         const index = users.findIndex(u => u.id === id);
 
         if (index === -1) {
-            throw new Error('Usuário não encontrado');
+            throw new Error('❌ Usuário não encontrado');
         }
 
-        const emailExists = users.some(u => u.email === updatedData.email && u.id !== id);
+        const emailExists = users.some(u => u.email === updatedData.email.toLowerCase() && u.id !== id);
         if (emailExists) {
-            throw new Error('Email já cadastrado');
+            throw new Error('❌ Email já cadastrado');
         }
 
         users[index] = {
@@ -100,7 +104,7 @@ function deleteUser(id) {
         const activeLoans = loans.some(aL => aL.userId === id && aL.active);
 
         if (activeLoans) {
-            throw new Error('Não é possível excluir usuário com empréstimos ativos');
+            throw new Error('❌ Não é possível excluir usuário com empréstimos ativos');
         }
 
         const users = getUsers();
@@ -132,9 +136,9 @@ function getBooks() {
 function saveBook(book) {
     try {
         const books = getBooks();
-        const titleExists = books.some(b => b.title === book.title);
+        const titleExists = books.some(b => b.title.toLowerCase() === book.title.toLowerCase());
         if (titleExists) {
-            throw new Error('Livro já cadastrado');
+            throw new Error('❌ Livro já cadastrado');
         }
 
         const newBook = {
@@ -161,12 +165,12 @@ function updateBook(id, updatedData) {
         const index = books.findIndex(b => b.id === id);
 
         if (index === -1) {
-            throw new Error('Livro não encontrado');
+            throw new Error('❌ Livro não encontrado');
         }
 
-        const titleExists = books.some(b => b.title === updatedData.title && b.id !== id);
+        const titleExists = books.some(b => b.title.toLowerCase() === updatedData.title.toLowerCase() && b.id !== id);
         if (titleExists) {
-            throw new Error('Livro já cadastrado');
+            throw new Error('❌ Livro já cadastrado');
         }
 
         books[index] = {
@@ -174,7 +178,7 @@ function updateBook(id, updatedData) {
             title: updatedData.title.trim(),
             author: updatedData.author.trim(),
             year: parseInt(updatedData.year),
-            genre: updatedData.genre(trim)
+            genre: updatedData.genre.trim()
         };
 
         localStorage.setItem('library_books', JSON.stringify(books));
@@ -191,7 +195,7 @@ function deleteBook(id) {
         const activeLoans = loans.some(aL => aL.bookId === id && aL.active);
 
         if (activeLoans) {
-            throw new Error('Não é possível excluir livro com empréstimos ativos');
+            throw new Error('❌ Não é possível excluir livro com empréstimo ativo');
         }
 
         const books = getBooks();
@@ -214,7 +218,7 @@ function updateBookAvailability(id, available) {
         const index = books.findIndex(b => b.id === id);
 
         if (index === -1) {
-            throw new Error('Livro não encontrado')
+            throw new Error('❌ Livro não encontrado')
         }
 
         books[index].available = available;
@@ -251,15 +255,15 @@ function registerLoan(loan) {
     try {
         const user = searchUserId(loan.userId);
         if (!user) {
-            throw new Error('Usuário não encontrado');
+            throw new Error('❌ Usuário não encontrado');
         }
 
         const book = searchBookId(loan.bookId);
         if (!book) {
-            throw new Error('Livro não encontrado');
+            throw new Error('❌ Livro não encontrado');
         }
         if(!book.available) {
-            throw new Error('Livro não disponível para empréstimo');
+            throw new Error('❌ Livro não disponível para empréstimo');
         }
 
         const loans = getLoans();
@@ -294,11 +298,11 @@ function registerDevolution(id) {
         const index = loans.findIndex(l => l.id === id);
 
         if (index === -1) {
-            throw new Error('Empréstimo não encontrado');
+            throw new Error('❌ Empréstimo não encontrado');
         }
 
         if (!loans[index].active) {
-            throw new Error('Empréstimo já foi devolvido');
+            throw new Error('❌ Empréstimo já foi devolvido');
         }
 
         loans[index].devolutionDate = new Date().toISOString();
