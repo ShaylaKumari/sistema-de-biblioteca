@@ -86,6 +86,13 @@ function updateUser(id, updatedData) {
 
 function deleteUser(id) {
     try {
+        const loans = getLoans();
+        const activeLoans = loans.some(aL => aL.userId === id && aL.active);
+
+        if (activeLoans) {
+            throw new Error('Não é possível excluir usuário com empréstimos ativos');
+        }
+
         const users = getUsers();
         const filteredUsers = users.filter(u => u.id !== id);
 
@@ -170,6 +177,13 @@ function updateBook(id, updatedData) {
 
 function deleteBook(id) {
     try {
+        const loans = getLoans();
+        const activeLoans = loans.some(aL => aL.bookId === id && aL.active);
+
+        if (activeLoans) {
+            throw new Error('Não é possível excluir livro com empréstimos ativos');
+        }
+
         const books = getBooks();
         const filteredBooks = books.filter(b => b.id !== id);
 
