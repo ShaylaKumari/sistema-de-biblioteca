@@ -63,7 +63,7 @@ function editUser(id) {
     const user = searchUserId(id);
 
     if(!user) {
-        console.log('Usuário não encontrado', 'error');
+        showNotification('Usuário não encontrado', 'error');
         return;
     }
 
@@ -91,7 +91,7 @@ function confirmUserDeletion(id) {
     const user = searchUserId(id);
 
     if(!user) {
-        console.log('Usuário não encontrado', 'error');
+        showNotification('Usuário não encontrado', 'error');
         return;
     }
 
@@ -100,14 +100,14 @@ function confirmUserDeletion(id) {
     if (confirmation) {
         try {
             deleteUser(id);
-            alert('Usuário excluído com sucesso!');
+            showNotification('✅ Usuário excluído com sucesso!', 'success');
             renderUsers();
 
             if (userEditingId === id) {
                 clearForm();
             }
         } catch (error) {
-            console.error(error);
+            showNotification(error.message, 'error');
         }
     }
 }
@@ -126,16 +126,16 @@ function handleSubmit(event) {
     try {
         if (userEditingId) {
             updateUser(userEditingId, userData);
-            alert('Usuário atualizado com sucesso!');
+            showNotification('✅ Usuário atualizado com sucesso!', 'success');
         } else {
             saveUser(userData);
-            alert('Usuário cadastrado com sucesso!');
+            showNotification('✅ Usuário cadastrado com sucesso!', 'success');
         }
 
         clearForm();
         renderUsers();
     } catch (error) {
-        console.error(error);
+        showNotification(error.message, 'error');
     }
 }
 

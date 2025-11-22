@@ -88,7 +88,7 @@ function editBook(id) {
     const book = searchBookId(id);
 
     if (!book) {
-        console.log('Livro não encontrado', 'error');
+        showNotification('❌ Livro não encontrado', 'error');
         return;
     }
 
@@ -120,7 +120,7 @@ function confirmBookDeletion(id) {
     const book = searchBookId(id);
 
     if (!book) {
-        console.log('Livro não encontrado', 'error');
+        showNotification('❌ Livro não encontrado', 'error');
         return
     }
 
@@ -129,14 +129,14 @@ function confirmBookDeletion(id) {
     if (confirmation) {
         try {
             deleteBook(id);
-            alert('Livro excluído com sucesso!');
+            showNotification('✅ Livro excluído com sucesso!', 'success');
             renderBooks();
 
             if (bookEditingId === id) {
                 clearForm();
             }
         } catch (error) {
-            console.error(error);
+            showNotification(error.message, 'error');
         }
     }
 }
@@ -159,16 +159,16 @@ function handleSubmit(event) {
     try {
         if (bookEditingId) {
             updateBook(bookEditingId, bookData);
-            alert('Livro atualizado com sucesso!');
+            showNotification('✅ Livro atualizado com sucesso!', 'success');
         } else {
             saveBook(bookData);
-            alert('Livro cadastrado com sucesso!');
+            showNotification('✅ Livro cadastrado com sucesso!', 'success');
         }
 
         clearForm();
         renderBooks();
     } catch (error) {
-        console.error(error);
+        showNotification(error.message, 'error');
     }
 }
 

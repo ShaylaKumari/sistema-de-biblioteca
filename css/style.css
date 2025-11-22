@@ -269,3 +269,37 @@ header {
     color: #026630;
     background-color: rgba(6, 231, 6, 0.185);
 }
+
+/* NOTIFICATION  */
+.notification {
+    position: fixed;
+    bottom: 3rem;
+    right: 5rem;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #6a6a6a3d;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+.notification.success {
+    color: var(--color-success);
+}
+
+.notification.error {
+    color: var(--color-error);
+}
+
+.notification.warning {
+    color: var(--color-warning);
+}
+
+

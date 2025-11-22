@@ -130,7 +130,7 @@ function confirmDevolution(id) {
     const loan = searchLoanId(id);
 
     if (!loan) {
-        console.log('Empréstimo não encontrado', 'error');
+        showNotification('❌ Empréstimo não encontrado', 'error');
         return;
     }
 
@@ -139,11 +139,11 @@ function confirmDevolution(id) {
     if (confirmation) {
         try {
             registerDevolution(id);
-            alert('Devolução registrada com sucesso!');
+            showNotification('✅ Devolução registrada com sucesso!', 'success');
             renderLoans();
             fillSelects();
         } catch (error) {
-            console.error(error);
+            showNotification(error.message, 'error');
         }
     }
 }
@@ -155,12 +155,12 @@ function handleSubmit(event) {
     const bookId = document.getElementById('bookId').value;
 
     if (!userId) {
-        alert('Selecione um usuário');
+        showNotification('⚠️ Selecione um usuário', 'warning');
         return
     }
 
     if (!bookId) {
-        alert('Selecione um livro');
+        showNotification('⚠️ Selecione um livro', 'warning');
         return;
     }
 
@@ -171,14 +171,14 @@ function handleSubmit(event) {
 
     try {
         registerLoan(loanData);
-        alert('Empréstimo registrado com sucesso!');
+        showNotification('✅ Empréstimo registrado com sucesso!', 'success');
 
         document.getElementById('formLoans').reset();
 
         renderLoans();
         fillSelects();
     } catch (error) {
-        console.error(error);
+        showNotification(error.message, 'error');
     }
 }
 
