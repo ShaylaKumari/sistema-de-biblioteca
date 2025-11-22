@@ -81,7 +81,7 @@ Todo o sistema utiliza LocalStorage como mecanismo de armazenamento, sem necessi
   - Todas as variáveis e funções foram nomeadas em inglês, seguindo boas práticas.
 
 ## 🌐 Acesse o projeto
-🔗 Link para o projeto hospedado: [Sistema de Biblioteca](atualizar após deploy)
+🔗 Link para o projeto hospedado: [Sistema de Biblioteca](https://shaylakumari.github.io/sistema-de-biblioteca/index.html)
 
 ## 👩‍💻 Desenvolvido por
 [**Ananda Shayla Soares Kumari**](https://shaylakumari.github.io/Portfolio/#home)  
